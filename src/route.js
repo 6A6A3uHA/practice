@@ -1,6 +1,9 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import home from './composables/home.vue'
 import Game1 from './components/Game1.vue'
+import Game2 from './components/Game2.vue'
+import Game3 from './components/Game3.vue'
+import Game4 from './components/Game4.vue'
 
 const routes = [
     { path: "/", component: home, name: "home" },
