@@ -10,10 +10,7 @@ import home from './composables/home.vue';
         <RouterLink :to="{ name: home }">1</RouterLink>
         <RouterLink :to="{ name: 'game1' }">2</RouterLink>
     </header>
-    <section v-if="home">
-        <!--Карточки игр, отцентровать и т д-->
-    </section>
-    <section v-if="nothome">
+    <section>
         <RouterView/>
     </section>
 </template>
