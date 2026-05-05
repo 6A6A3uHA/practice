@@ -6,9 +6,13 @@ import home from './composables/home.vue';
 </script>
 
 <template>
-    <RouterLink :to="{name: home}">1</RouterLink>
-    <RouterLink :to="{name: nothome}">2</RouterLink>
-    <RouterView/>
+    <header>
+        <RouterLink :to="{ name: home }">1</RouterLink>
+        <RouterLink :to="{ name: 'game1' }">2</RouterLink>
+    </header>
+    <section>
+        <RouterView/>
+    </section>
 </template>
 
 <style scoped>
