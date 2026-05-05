@@ -1,12 +1,12 @@
 <script setup>
-import { RouterLink } from 'vue-router';
-import home from './composables/home.vue';
+    import { RouterLink } from 'vue-router';
+    import useUser from './composables/useUser';
 
 </script>
 
 <template>
     <header>
-        <RouterLink :to="{ name: home }">1</RouterLink>
+        <RouterLink :to="{ name: 'home' }">1</RouterLink>
     </header>
     <section>
         <RouterView/>
