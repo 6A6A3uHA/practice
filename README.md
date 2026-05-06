@@ -1,5 +1,39 @@
-# Vue 3 + Vite
+# Vue 3 + Vite + vue-router + ts
+## Начало работы  
+```
+git clone https://github.com/6A6A3uHA/practice.git .  
+git pull origin main  
+npm i" / "npm install  
+git checkout -b 'Ваше имя(без кавычек)'  
+git add .  
+git commit -m 'Внесенные изменения по простому(в кавычках)'  
+git push -u origin 'Ваше имя(без кавычек)'
+```  
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## работа в дальнейшем:  
+### Начало всегда:  
+  - Кто то мог срастить свою ветку с main. Ваши файлы это не заденет если эти файлы не трогал другой человек.  
+  `git pull origin main`  
+  - если в группе я сказал что, что-то добавил в сборку  
+    `git i`  
+### Конец работы(не в целом, а на день):  
+```
+git checkout
+```  
+  - проверяем что выгрузим в  
+    `Your branch is up to date with 'origin/'Ваш имя'.`
+    
+  - если там не ваше имя:  
+  `git checkout 'Ваш имя(без кавычек)'`
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+```
+git add .  
+git commit -m 'Внесенные изменения по простому(в кавычках)'  
+git push" / "git push origin 'Ваш имя(без кавычек)'  
+```
+Когда завершили файл возвращаемсся на этот сайт, заходим на 3 вкладку Pull requests.  
+Жмем большую зеленую кнопку New pull request.  
+base: main <– compare: 'Ваш имя(без кавычек)' ВНИМАТЕЛЬНО.  
+Жмем зеленую кнопку Create pull request  
+Далее появится кнопка срастить, это по памяти написать не могу  
+Сращиваем и оповещаем в группе в вк, чтобы люди обновились до ваших изменений  
