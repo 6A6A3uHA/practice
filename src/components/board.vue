@@ -2,6 +2,7 @@
     import { computed, ref, watch } from 'vue'
     import { choosed_game_type } from '../composables/useType'
     import { useRoute } from 'vue-router';
+    import useUser from '../composables/useUser';
 
     const props = defineProps<{
         choosed_game?: choosed_game_type | 0
@@ -22,6 +23,8 @@
     }, { deep: true })
 
     const flag_page_leaderboard = computed(() => typeof route?.params?.numgame === 'string')
+
+    const flag_updated = ref(0)
 
     /**
      * Принимает как :chosed_game, так и v-model:choosed_game или значение из атрибута страницы
@@ -64,6 +67,7 @@
      */
     const flag_open = computed<boolean>({
         get: () => {
+            flag_updated.value++
             if (flag_page_leaderboard.value) {
                 return true
             }
@@ -76,49 +80,75 @@
             emit('update:flag_open', val)
         }
     })
+
     /**
      * Неизменяемый компонентом пропс
      */
     const score = computed<number>({
         get: () => {
+            flag_updated.value++
             if (flag_page_leaderboard.value) {
                 return 0
             }
             return props?.score ?? -1
         },
         set: (val) => {
+            val
             return
         }
     })
+
     const name = ref<string>("")
-    const list = {
-        0: { name: "aaa", score: 123 },
-        1: { name: "bbb", score: 50 },
-        2: { name: "bbb", score: 50 },
-        3: { name: "bbb", score: 50 },
-        4: { name: "bbb", score: 50 },
-        5: { name: "bbb", score: 50 },
-        6: { name: "bbb", score: 50 },
+
+
+    const sorted_list_users = computed(() => {
+        void flag_updated.value
+        if (game.value !== 0) {
+            return useUser.getUsers(game.value)
+        }
+        else return { 1: { name: "Возникла ошибка", score: "-1" } }
+    })
+
+    function write_user() {
+        flag_updated.value++
+        if (game.value === 0) return
+
+        useUser.setUser(game.value, { name: name.value, score: score.value })
+        flag_write.value = false
+
+        name.value = ''
+        return
     }
+
     const height = computed(() => { return flag_write.value ? '40%' : flag_page_leaderboard.value ? '100%' : '80%' })
     const width = computed(() => { return flag_write.value ? '40%' : flag_page_leaderboard.value ? '80%' : '60%' })
-
 </script>
 <template>
     <div class="block">
         <div class="board">
             <div class="close" @click="flag_open = false" v-if="!flag_page_leaderboard">&#65336;</div>
-            <div>{{ where_i }}</div><!--Чисто для наглядности-->
+            <div>
+                <p>Это страница рейтинга: {{ flag_page_leaderboard }}</p>
+                <p>Номер игры:{{ game }}</p>
+                <p>Можно ли записать пользователя:{{ flag_write }}</p>
+                <p>Флаг открытого окна:{{ flag_open }}</p>
+                <p>Количество очков:{{ score }}</p>
+                <p>Имя пользователя:{{ name }}</p>
+                <p>Изменение числа гарантирует обновление страницы {{ flag_updated }}</p>
+            </div><!--Чисто для наглядности-->
             <div class="scroller">
-                <div class="grid" v-for="value, id in list" :key="id">
+                <div class="grid" v-for="value, id in sorted_list_users" :key="id">
                     <div class="grid_cell">{{ value.name }}</div>
                     <div class="grid_cell">{{ value.score }}</div>
                 </div>
             </div>
             <div class="interactive" v-if="!flag_page_leaderboard">
-                <div class="input_name" v-if="flag_write">
-                    <input type="text" v-model="name">
-                    <button @click="flag_end_game = !flag_end_game">Записать свое имя</button>
+                <div class="write_box" v-if="flag_write">
+                    <div>Вы набрали {{ score }} очков. Желаете записать свое имя в таблицу рейтинга?</div>
+                    <div class="input_name">
+                        <input type="text" v-model="name">
+                        <button @click="write_user()">Записать свое имя</button>
+                    </div>
                 </div>
                 <button @click="flag_open = !flag_open;">Играть еще раз</button>
             </div>
@@ -135,6 +165,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding-top: 75px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        overflow: hidden;
     }
 
     .board {
@@ -150,14 +184,17 @@
         flex-direction: column;
         align-items: center;
         overflow: hidden;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     .scroller {
         flex: 1;
         min-height: 0;
         min-width: 100%;
-        overflow-y: auto;
-        border: 1px solid rgb(68, 68, 68);
+        overflow-y: scroll;
+        border: 1px solid rgb(22, 22, 22);
+        max-height: 350px;
     }
 
     /* Остальные стили без изменений */
@@ -183,12 +220,28 @@
         padding: 10px 0;
     }
 
+    .interactive>button {
+        padding: 3px 5px 3px 5px;
+    }
+
+    .write_box {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        margin: 10px;
+    }
+
     .input_name {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-evenly;
         align-items: center;
         gap: 10px;
+        width: 50%;
+    }
+
+    .input_name>button {
+        padding: 3px 5px 3px 5px;
     }
 
     .close {
