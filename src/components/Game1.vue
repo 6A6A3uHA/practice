@@ -19,25 +19,4 @@
         -->
     </div>
 </template>
-<style scoped>
-    .for_game {
-        position: relative;
-        flex: 1;
-        overflow: hidden;
-    }
-
-    .window {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        flex: 1;
-        margin-top: 175px;
-        margin-bottom: 10px;
-        inset: 0;
-        overflow: hidden;
-    }
-</style>
+<style scoped></style>
