@@ -12,17 +12,11 @@
     <board :choosed_game="prop_num_game" v-model:flag_end_game="flag_end_game" v-model:flag_open="flag_open"
         v-model:score="score" v-if="flag_open">
     </board>
-    <div class="for_game">
-
-        <!-- <div v-if="flag_open" class="window">
-            
-        </div> -->
-        <div class="game">
-            <!--Здесь пишем игру
+    <div class="game">
+        <!--Здесь пишем игру
             Игра начинается по кнопке, а не мгновенно
             флаги выше нужны для работы компонента    
         -->
-        </div>
     </div>
 </template>
 <style scoped>
