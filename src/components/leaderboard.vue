@@ -42,14 +42,15 @@
     }
 
     nav {
-        border-top: 1px solid rgb(112, 110, 110);
         height: 20%;
-        margin: 10px;
+        padding-top: 20px;
+        padding-bottom: 20px;
         width: 100%;
         flex: 0.1;
         display: flex;
         justify-content: center;
         gap: 20px;
         align-items: center;
+        overflow: hidden;
     }
 </style>

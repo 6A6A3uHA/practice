@@ -39,6 +39,10 @@
     </main>
     <footer>
         <hr>
+        <div>
+            <p>Сайт с 4 играми</p>
+            <p>Работали Семенов Михаил, Осорина София, Мамедов Арсений, Гриднев Егор</p>
+        </div>
     </footer>
 </template>
 
@@ -54,6 +58,8 @@
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        background-color: rgb(24, 24, 24);
+        padding: 20px;
     }
 
     .navigation {
