@@ -9,11 +9,9 @@
     const score = ref(0)//количество очков в игре
 </script>
 <template>
-    <div v-if="flag_open" class="window">
-        <board :choosed_game="prop_num_game" v-model:flag_end_game="flag_end_game" v-model:flag_open="flag_open"
-            v-model:score="score">
-        </board>
-    </div>
+    <board :choosed_game="prop_num_game" v-model:flag_end_game="flag_end_game" v-model:flag_open="flag_open"
+        v-model:score="score" v-if="flag_open">
+    </board>
     <div class="game">
         <!--Здесь пишем игру
             Игра начинается по кнопке, а не мгновенно
@@ -21,14 +19,4 @@
         -->
     </div>
 </template>
-<style scoped>
-    .window {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
-</style>
+<style scoped></style>

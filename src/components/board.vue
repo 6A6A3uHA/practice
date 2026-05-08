@@ -160,12 +160,13 @@
         z-index: 1;
         width: 100%;
         min-height: 100%;
+        max-height: 100%;
         flex: 1;
         background-color: rgba(128, 128, 128, 0.25);
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 75px;
+        padding-top: 10px;
         margin-top: 0px;
         margin-bottom: 0px;
         overflow: hidden;
