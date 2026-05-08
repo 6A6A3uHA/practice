@@ -23,11 +23,12 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  margin: 0px;
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100%;
+  padding: 0px;
 }
 
 h1 {
@@ -59,10 +60,14 @@ button:focus-visible {
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  min-width: 100%;
+  min-height: 100%;
+  margin: 0px;
   text-align: center;
+  padding: 0px;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
 }
 
 @media (prefers-color-scheme: light) {
