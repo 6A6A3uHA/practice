@@ -1,0 +1,52 @@
+# .github/workflows/deploy.yml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]      # Деплой при пуше в main
+  workflow_dispatch:      # + возможность ручного запуска
+
+# Права доступа для токена
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Отмена предыдущих запусков при новом пуше
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v4
+
+      - name: Установка Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'npm'      # Кэширование node_modules
+
+      - name: Установка зависимостей
+        run: npm ci         # Быстрая чистая установка
+
+      - name: Сборка проекта
+        run: npm run build  # Создаёт папку dist/
+
+      - name: Настройка GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Загрузка артефакта
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'    # Папка со сборкой
+
+      - name: Деплой на GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
