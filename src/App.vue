@@ -21,7 +21,7 @@
                 Рейтинг игроков
             </RouterLink>
             <RouterLink :to="{ name: 'game1' }" v-if="useRoute().name !== 'game1' && !isHome">
-                Название игры1
+                Пинг-понг
             </RouterLink>
             <RouterLink :to="{ name: 'game2' }" v-if="useRoute().name !== 'game2' && !isHome">
                 Название игры2
