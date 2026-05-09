@@ -1,28 +1,37 @@
-if (!localStorage.getItem('1') || !localStorage.getItem('2') || !localStorage.getItem('3') || !localStorage.getItem('4')) {
-    localStorage.setItem('1', JSON.stringify({
-        0: { name: 'game1-1', score: 1 },
-        1: { name: 'game1-2', score: 2 },
-        2: { name: 'game1-3', score: 3 }
-    }))
-    localStorage.setItem('add1', String(3))
-    localStorage.setItem('2', JSON.stringify({
-        0: { name: 'game2-1', score: 1 },
-        1: { name: 'game2-2', score: 2 },
-        2: { name: 'game2-3', score: 3 }
-    }))
-    localStorage.setItem('add2', String(3))
-    localStorage.setItem('3', JSON.stringify({
-        0: { name: 'game3-1', score: 1 },
-        1: { name: 'game3-2', score: 2 },
-        2: { name: 'game3-3', score: 3 }
-    }))
-    localStorage.setItem('add3', String(3))
-    localStorage.setItem('4', JSON.stringify({
-        0: { name: 'game4-1', score: 1 },
-        1: { name: 'game4-2', score: 2 },
-        2: { name: 'game4-3', score: 3 }
-    }))
-    localStorage.setItem('add4', String(3))
+function initLS() {
+    if (!localStorage.getItem('1') || !localStorage.getItem('2') || !localStorage.getItem('3') || !localStorage.getItem('4')) {
+        localStorage.setItem('1', JSON.stringify({
+            0: { name: 'game1-1', score: 1 },
+            1: { name: 'game1-2', score: 2 },
+            2: { name: 'game1-3', score: 3 }
+        }))
+        localStorage.setItem('add1', String(3))
+        localStorage.setItem('2', JSON.stringify({
+            0: { name: 'game2-1', score: 1 },
+            1: { name: 'game2-2', score: 2 },
+            2: { name: 'game2-3', score: 3 }
+        }))
+        localStorage.setItem('add2', String(3))
+        localStorage.setItem('3', JSON.stringify({
+            0: { name: 'game3-1', score: 1 },
+            1: { name: 'game3-2', score: 2 },
+            2: { name: 'game3-3', score: 3 }
+        }))
+        localStorage.setItem('add3', String(3))
+        localStorage.setItem('4', JSON.stringify({
+            0: { name: 'game4-1', score: 1 },
+            1: { name: 'game4-2', score: 2 },
+            2: { name: 'game4-3', score: 3 }
+        }))
+        localStorage.setItem('add4', String(3))
+    }
+}
+
+try {
+    initLS()
+}
+catch (e) {
+    console.warn("Storage init failed", e)
 }
 
 interface User {
