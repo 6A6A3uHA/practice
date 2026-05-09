@@ -11,7 +11,7 @@
     <div class="flex">
         <RouterLink :to="{ name: 'game1' }" class="card">
             <img src="#" alt="Фото этой игры">
-            <button>Играть</button>
+            <button>Играть в пинг-понг</button>
         </RouterLink>
         <RouterLink :to="{ name: 'game2' }" class="card">
             <img src="#" alt="Фото этой игры">

@@ -15,10 +15,14 @@
 </script>
 <template>
     <nav>
-        <button @click="useNavigate.Navigate('board', 1)" :class="{ selected: game === 1 }">Игра 1</button>
-        <button @click="useNavigate.Navigate('board', 2)" :class="{ selected: game === 2 }">Игра 2</button>
-        <button @click="useNavigate.Navigate('board', 3)" :class="{ selected: game === 3 }">Игра 3</button>
-        <button @click="useNavigate.Navigate('board', 4)" :class="{ selected: game === 4 }">Игра 4</button>
+        <button @click="useNavigate.Navigate('board', 1)" :class="{ selected: game === 1 }">Рейтинг игроков
+            пинг-понг</button>
+        <button @click="useNavigate.Navigate('board', 2)" :class="{ selected: game === 2 }">Рейтинг игроков Игра
+            2</button>
+        <button @click="useNavigate.Navigate('board', 3)" :class="{ selected: game === 3 }">Рейтинг игроков Игра
+            3</button>
+        <button @click="useNavigate.Navigate('board', 4)" :class="{ selected: game === 4 }">Рейтинг игроков Игра
+            4</button>
     </nav>
     <RouterView />
 </template>
