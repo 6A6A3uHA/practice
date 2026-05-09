@@ -67,7 +67,6 @@
      */
     const flag_open = computed<boolean>({
         get: () => {
-            flag_updated.value++
             if (flag_page_leaderboard.value) {
                 return true
             }
@@ -86,7 +85,6 @@
      */
     const score = computed<number>({
         get: () => {
-            flag_updated.value++
             if (flag_page_leaderboard.value) {
                 return 0
             }
@@ -100,15 +98,22 @@
 
     const name = ref<string>("")
 
+    const counter = ref(0)
 
     const sorted_list_users = computed(() => {
+        void flag_write.value
         void flag_updated.value
+        void flag_open.value
+        void score.value
         if (game.value !== 0) {
             return useUser.getUsers(game.value)
         }
         else return { 1: { name: "Возникла ошибка", score: "-1" } }
     })
 
+    watch(sorted_list_users, () => {// Debug
+        counter.value++
+    })
     function write_user() {
         flag_updated.value++
         if (game.value === 0) return
@@ -135,6 +140,7 @@
                 <p>Количество очков:{{ score }}</p>
                 <p>Имя пользователя:{{ name }}</p>
                 <p>Изменение числа гарантирует обновление страницы {{ flag_updated }}</p>
+                <p>Счетчик обновлений таблицы {{ counter }}</p>
             </div><!--Чисто для наглядности-->
             <div class="scroller">
                 <div class="grid" v-for="value, id in sorted_list_users" :key="id">
@@ -187,6 +193,7 @@
         overflow: hidden;
         margin-top: 20px;
         margin-bottom: 20px;
+        background-color: rgb(40, 41, 41);
     }
 
     .scroller {

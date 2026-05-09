@@ -3,8 +3,10 @@
     import { computed, onMounted } from 'vue';
     import useNavigate from '../composables/useNavigate';
     onMounted(() => {
-        if (useRoute().name === 'leaderboar') {
-            useRouter().push({ name: 'board', params: { numgame: 1 } })
+        const route = useRoute()
+        const router = useRouter()
+        if (route.name === 'leaderboard') {
+            router.replace({ name: 'board', params: { numgame: 1 } })
         }
     })
     const route = useRoute()
