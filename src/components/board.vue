@@ -132,16 +132,6 @@
     <div class="block">
         <div class="board">
             <div class="close" @click="flag_open = false" v-if="!flag_page_leaderboard">&#65336;</div>
-            <div>
-                <p>Это страница рейтинга: {{ flag_page_leaderboard }}</p>
-                <p>Номер игры:{{ game }}</p>
-                <p>Можно ли записать пользователя:{{ flag_write }}</p>
-                <p>Флаг открытого окна:{{ flag_open }}</p>
-                <p>Количество очков:{{ score }}</p>
-                <p>Имя пользователя:{{ name }}</p>
-                <p>Изменение числа гарантирует обновление таблицы {{ flag_updated }}</p>
-                <p>Счетчик обновлений таблицы {{ counter }}</p>
-            </div><!--Чисто для наглядности-->
             <div class="scroller">
                 <div class="grid" v-for="value, id in sorted_list_users" :key="id">
                     <div class="grid_cell">{{ value.name }}</div>
