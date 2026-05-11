@@ -1,16 +1,10 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
     import { RouterLink } from "vue-router";
-    import { choosed_game_type } from '../composables/useType';
-    /**
-     * По умолчанию 0
-     */
-    const choose_game = ref<choosed_game_type | 0>(0)
 </script>
 <template>
     <div class="flex">
         <RouterLink :to="{ name: 'game1' }" class="card">
-            <img src="#" alt="Фото этой игры">
+            <img src="../assets/pingpong.png" alt="Фото этой игры">
             <button>Играть в пинг-понг</button>
         </RouterLink>
         <RouterLink :to="{ name: 'game2' }" class="card">
@@ -29,6 +23,8 @@
 </template>
 <style scoped>
     .flex {
+        position: relative;
+        margin-top: 50px;
         display: flex;
         flex-flow: row wrap;
         justify-content: space-evenly;
@@ -37,13 +33,37 @@
     }
 
     .card {
-        min-width: 300px;
-        min-height: 300px;
-        max-width: 600px;
-        max-height: 600px;
+        width: min(90vw, 400px);
+        height: min(min-content, 80vh);
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        aspect-ratio: 1/1;
+        outline: 1px solid white;
+        padding: 20px;
+        box-sizing: border-box;
+        flex-shrink: 1;
+    }
+
+    .card>img {
+        width: 100%;
+        height: 40%;
+        object-fit: contain;
+        flex-shrink: 0;
+        margin-bottom: 20px;
+    }
+
+    button {
+        width: 60%;
+        flex-shrink: 0;
+        padding: 10px 20px;
+        font-size: 16px;
     }
 
     .card:hover {
         cursor: pointer;
+        transform: scale(1.05);
+        transition: transform 0.2s;
     }
 </style>
