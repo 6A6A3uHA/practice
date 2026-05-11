@@ -289,7 +289,7 @@
     })
     const watch_btn = computed(() => {
         if (!game_width.value) return false
-        if (game_width.value < 1300) {
+        if (game_width.value < 1300 && height_message.value == "0px") {
             return true
         }
         else return false
