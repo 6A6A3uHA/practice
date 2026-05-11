@@ -232,14 +232,21 @@
     .input_name {
         display: flex;
         flex-flow: row nowrap;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
         gap: 10px;
         width: 50%;
     }
 
+    .input_name>input {
+        max-width: 50%;
+        min-width: 50px;
+        width: auto;
+    }
+
     .input_name>button {
         padding: 3px 5px 3px 5px;
+        white-space: nowrap;
     }
 
     .close {
