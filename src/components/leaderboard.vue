@@ -35,6 +35,7 @@
     button {
         outline: 1;
         border: 0;
+        font-size: 12px;
     }
 
     botton:focus {
