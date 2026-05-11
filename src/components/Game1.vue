@@ -124,6 +124,7 @@
     * 0 -вниз, 1 - вверх
     */
     const direction_y = ref<number>(Math.random() > 0.5 ? 1 : 0)
+    const flag_add_score = ref<boolean>(true)
 
     function startGame() {
         if (game_interval && !ball.value || !field_height.value) return
@@ -140,7 +141,13 @@
 
             if (ball.value.x <= 10 && (ball.value.y <= left_stick_y_number.value + (field_height.value as number) * 0.2 && ball.value.y + (field_height.value as number) * 0.05 >= left_stick_y_number.value)) {
                 direction_x.value = 1
-                score.value++
+                if (flag_add_score.value) {
+                    score.value++
+                    flag_add_score.value = false
+                    setTimeout(() => {
+                        flag_add_score.value = true
+                    }, 300);
+                }
             }
 
             if (ball.value.x <= 0 && direction_x.value == 0) {
