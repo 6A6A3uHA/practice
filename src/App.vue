@@ -58,13 +58,13 @@
                 Пинг-понг
             </RouterLink>
             <RouterLink :to="{ name: 'game2' }" v-if="useRoute().name !== 'game2' && !isHome">
-                Название игры2
+                Змейка
             </RouterLink>
             <RouterLink :to="{ name: 'game3' }" v-if="useRoute().name !== 'game3' && !isHome">
-                Назыание игры3
+                Поймай предметы
             </RouterLink>
             <RouterLink :to="{ name: 'game4' }" v-if="useRoute().name !== 'game4' && !isHome">
-                Название игры4
+                Космический стрелок
             </RouterLink>
         </div>
         <div v-else class="mobile_navigation">
@@ -86,15 +86,15 @@
                 </RouterLink>
                 <RouterLink :to="{ name: 'game2' }"
                     :class="{ narrow_navigation_selected: route.name == 'game2' ? true : false }">
-                    Название игры2
+                    Змейка
                 </RouterLink>
                 <RouterLink :to="{ name: 'game3' }"
                     :class="{ narrow_navigation_selected: route.name == 'game3' ? true : false }">
-                    Назыание игры3
+                    Поймай предметы
                 </RouterLink>
                 <RouterLink :to="{ name: 'game4' }"
                     :class="{ narrow_navigation_selected: route.name == 'game4' ? true : false }">
-                    Название игры4
+                    Космический стрелок
                 </RouterLink>
             </div>
         </nav>
@@ -104,7 +104,7 @@
         <hr>
         <div>
             <p>Сайт с 4 играми</p>
-            <p>Работали Семенов Михаил, Осорина София, Мамедов Арсений, Гриднев Егор</p>
+            <p>Работали Семенов Михаил, Осорина София, Мамедов Арсений, Григорьев Егор</p>
         </div>
     </footer>
 </template>
