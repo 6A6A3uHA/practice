@@ -1,26 +1,35 @@
 <script setup lang="ts">
     import { RouterLink } from "vue-router";
 </script>
+
 <template>
     <div class="flex">
         <RouterLink :to="{ name: 'game1' }" class="card">
-            <img src="../assets/pingpong.png" alt="Фото этой игры">
-            <button>Играть в пинг-понг</button>
+            <img src="../assets/pingpong.png" alt="Пинг-понг">
+            <h3>Пинг-понг</h3>
+            <button>Играть</button>
         </RouterLink>
+
         <RouterLink :to="{ name: 'game2' }" class="card">
-            <img src="#" alt="Фото этой игры">
+            <img src="../assets/snake.png" alt="Змейка">
+            <h3>Змейка</h3>
             <button>Играть</button>
         </RouterLink>
+
         <RouterLink :to="{ name: 'game3' }" class="card">
-            <img src="#" alt="Фото этой игры">
+            <img src="../assets/catch.png" alt="Поймай предметы">
+            <h3>Поймай предметы</h3>
             <button>Играть</button>
         </RouterLink>
+
         <RouterLink :to="{ name: 'game4' }" class="card">
-            <img src="#" alt="Фото этой игры">
+            <img src="../assets/space.png" alt="Космический стрелок">
+            <h3>Космический стрелок</h3>
             <button>Играть</button>
         </RouterLink>
     </div>
 </template>
+
 <style scoped>
     .flex {
         position: relative;
@@ -46,12 +55,19 @@
         flex-shrink: 1;
     }
 
-    .card>img {
+    .card > img {
         width: 100%;
         height: 40%;
         object-fit: contain;
         flex-shrink: 0;
         margin-bottom: 20px;
+    }
+
+    .card > h3 {
+        margin: 0 0 15px 0;
+        font-size: 22px;
+        text-align: center;
+        color: white;
     }
 
     button {

@@ -2,6 +2,7 @@
     import { RouterView, useRoute, useRouter } from 'vue-router';
     import { computed, onMounted } from 'vue';
     import useNavigate from '../composables/useNavigate';
+
     onMounted(() => {
         const route = useRoute()
         const router = useRouter()
@@ -9,27 +10,36 @@
             router.replace({ name: 'board', params: { numgame: 1 } })
         }
     })
+
     const route = useRoute()
     const game = computed(() => Number(route.params.numgame as string))
-
 </script>
+
 <template>
     <nav>
-        <button @click="useNavigate.Navigate('board', 1)" :class="{ selected: game === 1 }">Рейтинг игроков
-            пинг-понг</button>
-        <button @click="useNavigate.Navigate('board', 2)" :class="{ selected: game === 2 }">Рейтинг игроков Игра
-            2</button>
-        <button @click="useNavigate.Navigate('board', 3)" :class="{ selected: game === 3 }">Рейтинг игроков Игра
-            3</button>
-        <button @click="useNavigate.Navigate('board', 4)" :class="{ selected: game === 4 }">Рейтинг игроков Игра
-            4</button>
+        <button @click="useNavigate.Navigate('board', 1)" :class="{ selected: game === 1 }">
+            Рейтинг игроков: Пинг-понг
+        </button>
+
+        <button @click="useNavigate.Navigate('board', 2)" :class="{ selected: game === 2 }">
+            Рейтинг игроков: Змейка
+        </button>
+
+        <button @click="useNavigate.Navigate('board', 3)" :class="{ selected: game === 3 }">
+            Рейтинг игроков: Поймай предметы
+        </button>
+
+        <button @click="useNavigate.Navigate('board', 4)" :class="{ selected: game === 4 }">
+            Рейтинг игроков: Космический стрелок
+        </button>
     </nav>
+
     <RouterView />
 </template>
+
 <style scoped>
     .selected {
         outline: 2px solid rgb(153, 40, 153);
-
     }
 
     button {
