@@ -3,4 +3,10 @@
 <template>
     <h1>Страницы не существует</h1>
 </template>
-<style scoped></style>
+<style scoped>
+    h1{
+        position: absolute;
+        left:50%;
+        top:50%;
+    }
+</style>
