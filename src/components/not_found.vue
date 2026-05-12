@@ -6,7 +6,7 @@
 <style scoped>
     h1{
         position: absolute;
-        left:50%;
-        top:50%;
+        left:25%;
+        top:25%;
     }
 </style>
