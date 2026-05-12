@@ -11,6 +11,6 @@ import 'vue-router'
 
 declare module 'vue-router' {
   interface RouteMeta {
-    choose_game: 1 | 2 | 3 | 4
+    choose_game: 1 | 2 | 3 | 4 | 5
   }
 }

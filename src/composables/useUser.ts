@@ -1,5 +1,5 @@
 function initLS() {
-    if (!localStorage.getItem('1') || !localStorage.getItem('2') || !localStorage.getItem('3') || !localStorage.getItem('4')) {
+    if (!localStorage.getItem('1') || !localStorage.getItem('2') || !localStorage.getItem('3') || !localStorage.getItem('4') || !localStorage.getItem('5')) {
         localStorage.setItem('1', JSON.stringify({
             0: { name: 'game1-1', score: 1 },
             1: { name: 'game1-2', score: 2 },
@@ -24,6 +24,12 @@ function initLS() {
             2: { name: 'game4-3', score: 3 }
         }))
         localStorage.setItem('add4', String(3))
+        localStorage.setItem('5', JSON.stringify({
+            0: { name: 'game5-1', score: 1 },
+            1: { name: 'game5-2', score: 2 },
+            2: { name: 'game5-3', score: 3 }
+        }))
+        localStorage.setItem('add5', String(3))
     }
 }
 
@@ -42,7 +48,7 @@ interface User {
 type Id = number
 type Users = Record<Id, User>
 
-type Number_from_game = 1 | 2 | 3 | 4
+type Number_from_game = 1 | 2 | 3 | 4 | 5
 
 
 function setUser(number_game: Number_from_game, user: User): void {

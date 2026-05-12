@@ -1,4 +1,4 @@
-type choosed_game_type = 1 | 2 | 3 | 4
+type choosed_game_type = 1 | 2 | 3 | 4 | 5
 type flag_type = true | false
 
 export type {

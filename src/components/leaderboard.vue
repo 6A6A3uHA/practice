@@ -1,18 +1,18 @@
 <script setup lang="ts">
-    import { RouterView, useRoute, useRouter } from 'vue-router';
-    import { computed, onMounted } from 'vue';
-    import useNavigate from '../composables/useNavigate';
+import { RouterView, useRoute, useRouter } from 'vue-router';
+import { computed, onMounted } from 'vue';
+import useNavigate from '../composables/useNavigate';
 
-    onMounted(() => {
-        const route = useRoute()
-        const router = useRouter()
-        if (route.name === 'leaderboard') {
-            router.replace({ name: 'board', params: { numgame: 1 } })
-        }
-    })
-
+onMounted(() => {
     const route = useRoute()
-    const game = computed(() => Number(route.params.numgame as string))
+    const router = useRouter()
+    if (route.name === 'leaderboard') {
+        router.replace({ name: 'board', params: { numgame: 1 } })
+    }
+})
+
+const route = useRoute()
+const game = computed(() => Number(route.params.numgame as string))
 </script>
 
 <template>
@@ -32,42 +32,46 @@
         <button @click="useNavigate.Navigate('board', 4)" :class="{ selected: game === 4 }">
             Рейтинг игроков: Космический стрелок
         </button>
+
+        <button @click="useNavigate.Navigate('board', 5)" :class="{ selected: game === 5 }">
+            Рейтинг игроков: Игра 5
+        </button>
     </nav>
 
     <RouterView />
 </template>
 
 <style scoped>
-    .selected {
-        outline: 2px solid rgb(153, 40, 153);
-    }
+.selected {
+    outline: 2px solid rgb(153, 40, 153);
+}
 
-    button {
-        outline: 1;
-        border: 0;
-        font-size: 12px;
-    }
+button {
+    outline: 1;
+    border: 0;
+    font-size: 12px;
+}
 
-    botton:focus {
-        outline: 0;
-        border: 0;
-    }
+botton:focus {
+    outline: 0;
+    border: 0;
+}
 
-    button:hover {
-        outline: 4px solid rgb(218, 218, 113);
-        border: 0;
-    }
+button:hover {
+    outline: 4px solid rgb(218, 218, 113);
+    border: 0;
+}
 
-    nav {
-        height: 20%;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        width: 100%;
-        flex: 0.1;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        align-items: center;
-        overflow: hidden;
-    }
+nav {
+    height: 20%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    flex: 0.1;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    overflow: hidden;
+}
 </style>
